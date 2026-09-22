@@ -1,0 +1,68 @@
+[
+    {
+        "event": "login",
+        "user": "root",
+        "result": "failure",
+        "timestamp": "2026-09-21 22:20:23",
+        "args": [
+            "root",
+            "fdojsihbfdjnfkdmsa"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "djiahfusj",
+        "result": "failure",
+        "timestamp": "2026-09-21 22:24:52",
+        "args": [
+            "djiahfusj",
+            "ofkadjiohsbvc"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "root",
+        "result": "success",
+        "timestamp": "2026-09-21 22:25:20",
+        "args": [
+            "root",
+            "8888ds8812"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "odjsknv",
+        "result": "failure",
+        "timestamp": "2026-09-21 22:54:42",
+        "args": [
+            "odjsknv",
+            "paf[dovjspknmso=i0dsojl"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "feskfbd",
+        "result": "failure",
+        "timestamp": "2026-09-21 23:04:37",
+        "args": [
+            "feskfbd",
+            "skogdfjnmdlfkp[dgofjdls"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "root",
+        "result": "success",
+        "timestamp": "2026-09-22 15:39:14",
+        "args": [
+            "root",
+            "8888ds8812"
+        ],
+        "kwargs": {}
+    }
+]
