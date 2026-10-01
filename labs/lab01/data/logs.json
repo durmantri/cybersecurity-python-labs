@@ -1,0 +1,163 @@
+[
+    {
+        "event": "login",
+        "user": "",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:13:27",
+        "args": [
+            "",
+            "523423"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "rgelmfd",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:14:19",
+        "args": [
+            "rgelmfd",
+            "fdbmdf"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "0feiowj",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:21:57",
+        "args": [
+            "0feiowj",
+            "\\eojdvifn"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "fd]",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:22:06",
+        "args": [
+            "fd]",
+            "dfos"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "ef",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:25:28",
+        "args": [
+            "ef",
+            ""
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:25:33",
+        "args": [
+            "",
+            ""
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:27:01",
+        "args": [
+            "",
+            " fw f "
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "ldvms",
+        "result": "failure",
+        "timestamp": "2026-09-24 09:33:41",
+        "args": [
+            "ldvms",
+            "prgof"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "fdsl",
+        "result": "failure",
+        "timestamp": "2026-09-29 16:36:04",
+        "args": [
+            "fdsl",
+            "fdlsmf"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "hgl",
+        "result": "failure",
+        "timestamp": "2026-10-01 08:38:39",
+        "args": [
+            "hgl",
+            "ihjn"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "igjk",
+        "result": "failure",
+        "timestamp": "2026-10-01 08:39:44",
+        "args": [
+            "igjk",
+            "rgjk"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "залщовіра",
+        "result": "failure",
+        "timestamp": "2026-10-01 09:41:55",
+        "args": [
+            "залщовіра"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "admin",
+        "result": "success",
+        "timestamp": "2026-10-01 09:50:10",
+        "args": [
+            "admin"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "admin ",
+        "result": "failure",
+        "timestamp": "2026-10-01 09:50:34",
+        "args": [
+            "admin "
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "",
+        "result": "failure",
+        "timestamp": "2026-10-01 09:50:55",
+        "args": [
+            ""
+        ],
+        "kwargs": {}
+    }
+]

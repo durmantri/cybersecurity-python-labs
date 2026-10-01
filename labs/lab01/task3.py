@@ -24,6 +24,7 @@ users_to_register = (
     ("nokturnal", "mo0rtummm"),
     ("Ryzen", "Sskdw21fs0fk"),
     ("user_043912", "pilinesad3453"),
+    ("","faosjdivjf38r233ud")
 )
 
 MIN_LENGTH = 9
@@ -54,7 +55,10 @@ def generate_hash(password: str, salt: str = "00000") -> str:
 
 def create_user(username, password) -> tuple[str, str]:
     """Створює кортеж з логіну користувача та його хешу"""
-
+    
+    if not username:
+        raise ValueError("немає логіна")
+    
     hash1 = generate_hash(password, salt)
     return (username, hash1)
 
@@ -109,14 +113,14 @@ def log_event(func):
         finally:
             # вивід тільки введених логіна та пароля
             clean_args = []
-            for arg in args[:2]:
+            for arg in args[:1]:
                 clean_args.append(str(arg))
 
             log_entry = {
                 "event": func.__name__,
                 "user": str(username),
                 "result": result_status,
-                "timestamp": f"{datetime.now():%Y-%m-%d %H:%M:%S}",
+                "timestamp": f"{datetime.now().astimezone():%Y-%m-%d %H:%M:%S}",
                 "args": clean_args,
                 "kwargs": kwargs,
             }
@@ -188,7 +192,7 @@ def main():
             print("Авторизовано")
         else:
             print("Невірний логін або пароль")
-    except ValueError:
+    except (ValueError,ValidationError):
         print("Невірний ввід")
 
 

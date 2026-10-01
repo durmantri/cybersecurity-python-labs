@@ -1,3 +1,6 @@
+from rich.console import Console
+from rich.table import Table
+
 users = {
     "red_team_lead": {
         "role": "red_team",
@@ -45,13 +48,6 @@ resources = [
 security_levels = ("Academic", "Operational", "Tactical", "Strategic")
 blocked_users = {"retired_expert", "academic_violator", "leaked_account"}
 
-# Вивід списку ресурсів системи
-print("Список ресурсів системи \n")
-for resource_name, resource_level in resources:
-    level_name = security_levels[resource_level - 1]
-    print(f"{resource_name}: {level_name}")
-
-
 def user_status(username: str) -> str:
     """Повертає статус користувача"""
 
@@ -71,28 +67,58 @@ def user_status(username: str) -> str:
 
     return "ALLOW"
 
-
 def main():
+    
+    console = Console()
 
-    print("\nРезультат перевірки \n")
+    # Таблиця ресурсів системи
+    res_table = Table(title="Список ресурсів системи")
+    res_table.add_column("Ресурс", style="white", no_wrap=True)
+    res_table.add_column("Рівень безпеки", style="magenta", justify="center")
+
+    for resource_name, resource_level in resources:
+        level_name = security_levels[resource_level - 1]
+        res_table.add_row(resource_name, level_name)
+
+    console.print(res_table)
+    console.print()
+
+    # Таблиця результатів перевірки доступу
+    access_table = Table(title="Результати перевірки доступу")
+    access_table.add_column("Користувач")
+    access_table.add_column("Ресурс", style="white")
+    access_table.add_column("Рівень ресурсу", style="magenta", justify="center")
+    access_table.add_column("Статус доступу", justify="center")
+
     # визначення статусу користувача
     for username in users:
         status = user_status(username)
 
-        # алгоритм перевірки ресурсу для кожного користувача
         for resource_name, resource_level in resources:
+            level_name = security_levels[resource_level - 1]
+            
             if status == "ALLOW":
                 user_clearance = users[username]["clearance"]
-
                 if user_clearance >= resource_level:
                     final_status = "ALLOW"
+                    color = "green"
                 else:
-                    final_status = "DENY(Insufficient clearance)"
+                    final_status = "DENY (Insufficient clearance)"
+                    color = "red"
             else:
                 final_status = status
+                color = "red"
 
-            print(f"user=[{username}] resource=[{resource_name}] -> {final_status}")
-        print()
+            access_table.add_row(
+                username, 
+                resource_name, 
+                level_name, 
+                f"[{color}]{final_status}[/{color}]"
+            )
+
+    console.print(access_table)
+
+
 
 
 if __name__ == "__main__":
