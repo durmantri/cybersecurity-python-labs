@@ -48,6 +48,7 @@ resources = [
 security_levels = ("Academic", "Operational", "Tactical", "Strategic")
 blocked_users = {"retired_expert", "academic_violator", "leaked_account"}
 
+
 def user_status(username: str) -> str:
     """Повертає статус користувача"""
 
@@ -67,8 +68,9 @@ def user_status(username: str) -> str:
 
     return "ALLOW"
 
+
 def main():
-    
+
     console = Console()
 
     # Таблиця ресурсів системи
@@ -96,7 +98,7 @@ def main():
 
         for resource_name, resource_level in resources:
             level_name = security_levels[resource_level - 1]
-            
+
             if status == "ALLOW":
                 user_clearance = users[username]["clearance"]
                 if user_clearance >= resource_level:
@@ -110,15 +112,13 @@ def main():
                 color = "red"
 
             access_table.add_row(
-                username, 
-                resource_name, 
-                level_name, 
-                f"[{color}]{final_status}[/{color}]"
+                username,
+                resource_name,
+                level_name,
+                f"[{color}]{final_status}[/{color}]",
             )
 
     console.print(access_table)
-
-
 
 
 if __name__ == "__main__":

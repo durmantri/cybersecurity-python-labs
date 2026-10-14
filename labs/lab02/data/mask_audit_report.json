@@ -1,0 +1,38 @@
+{
+    "total_passwords": 44,
+    "weak_passwords": 10,
+    "weak_percentage": 22.7,
+    "average_length": 10.0,
+    "top_masks": [
+        {
+            "mask": "Ullllldddds",
+            "count": 4,
+            "percentage": 9.1,
+            "example": "Summer2026!"
+        },
+        {
+            "mask": "llllllll",
+            "count": 3,
+            "percentage": 6.8,
+            "example": "password"
+        },
+        {
+            "mask": "llllll",
+            "count": 3,
+            "percentage": 6.8,
+            "example": "qwerty"
+        },
+        {
+            "mask": "lllllll",
+            "count": 2,
+            "percentage": 4.5,
+            "example": "letmein"
+        },
+        {
+            "mask": "dddddd",
+            "count": 1,
+            "percentage": 2.3,
+            "example": "123456"
+        }
+    ]
+}

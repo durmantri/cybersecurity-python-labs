@@ -17,7 +17,7 @@ passwords = [
     "default",
     "12345678fgds",
     "12345678",
-    "qqq"
+    "qqq",
 ]
 criteria = {
     "min_length": 8,
@@ -32,9 +32,9 @@ def passwd_check(passwd: str, pass_counts: Counter) -> tuple[str, str]:
     """Перевіряє пароль на відповідність критеріям"""
 
     # заборонений
-    if len(passwd) < criteria["min_length"] or passwd in forbidden_passwords : 
+    if len(passwd) < criteria["min_length"] or passwd in forbidden_passwords:
         return "Заборонений", "red"
-        
+
     has_lower = any(c.islower() for c in passwd)
     has_upper = any(c.isupper() for c in passwd)
     has_digit = any(c.isdigit() for c in passwd)
@@ -76,11 +76,10 @@ def main():
     table.add_column("Пароль", style="white")
     table.add_column("Надійність", justify="center")
 
-
     # відсіювання паролів що повторюються та вивід чистої таблиці
     for passwd in passwords:
-            category, color = passwd_check(passwd, pass_counts)
-            table.add_row(passwd, f"[{color}]{category}[/{color}]")
+        category, color = passwd_check(passwd, pass_counts)
+        table.add_row(passwd, f"[{color}]{category}[/{color}]")
 
     console = Console()
     console.print(table)

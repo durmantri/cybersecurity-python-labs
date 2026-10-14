@@ -24,7 +24,7 @@ users_to_register = (
     ("nokturnal", "mo0rtummm"),
     ("Ryzen", "Sskdw21fs0fk"),
     ("user_043912", "pilinesad3453"),
-    ("","faosjdivjf38r233ud")
+    ("", "faosjdivjf38r233ud"),
 )
 
 MIN_LENGTH = 9
@@ -55,10 +55,10 @@ def generate_hash(password: str, salt: str = "00000") -> str:
 
 def create_user(username, password) -> tuple[str, str]:
     """Створює кортеж з логіну користувача та його хешу"""
-    
+
     if not username:
         raise ValueError("немає логіна")
-    
+
     hash1 = generate_hash(password, salt)
     return (username, hash1)
 
@@ -192,7 +192,7 @@ def main():
             print("Авторизовано")
         else:
             print("Невірний логін або пароль")
-    except (ValueError,ValidationError):
+    except (ValueError, ValidationError):
         print("Невірний ввід")
 
 

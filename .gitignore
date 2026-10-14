@@ -151,6 +151,8 @@ activemq-data/
 .env
 .envrc
 .venv
+.venv/
+
 env/
 venv/
 ENV/
@@ -216,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+cybersecurity-python-labs/labs/lab01/data/
+cybersecurity-python-labs/labs/lab02/data/passwords.txt
