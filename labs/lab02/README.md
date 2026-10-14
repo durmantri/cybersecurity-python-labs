@@ -32,9 +32,7 @@ pip install -r requirements.txt
   python -m labs.lab02.main demo
 
 - Запуск утиліти аудиту словника паролів (Завдання 2):
-  python -m labs.lab02.task2 --wordlist labs/lab02/data/passwords.txt --min-length 8 --top-masks 5 --output-stats labs/lab02/data/mask_audit_report.json
-  ,або
-  python -m labs.lab02.task2 --wordlist labs/lab02/data/passwords.txt
+  python -m labs.lab02.main analyze --wordlist labs\lab02\data\passwords.txt
 
 5. ОПИС CLI АРГУМЕНТІВ (Завдання 2)
 

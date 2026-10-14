@@ -1,16 +1,16 @@
-import argparse
-import json
+import logging
 import re
 from collections import Counter
 from pathlib import Path
 
+# логер для модуля
+logger = logging.getLogger(__name__)
+
 
 def create_password_mask(password: str) -> str:
-    """Створює  маску пароля:
-    U - Upper
-    l - lower
-    d - Digit
-    s - Special
+    """Створює маску пароля:
+
+    U - Upper, l - lower, d - Digit, s - Special
     """
     mask = []
     for char in password:
@@ -27,7 +27,7 @@ def create_password_mask(password: str) -> str:
 
 def password_generator(file_path: Path):
     """Генератор для почергового читання файлу"""
-    with open(file_path, "r", encoding="utf-8") as file:
+    with open(file_path, "r", encoding="utf-8", errors="ignore") as file:
         for line in file:
             pwd = line.strip()
             if pwd:
@@ -35,7 +35,7 @@ def password_generator(file_path: Path):
 
 
 def audit_dictionary(file_path: Path, min_length: int, top_masks_n: int):
-    print(f"[INFO] Processing dictionary file {file_path} using generators...")
+    logger.info(f"Processing dictionary file {file_path} using generators...")
 
     total_passwords = 0
     weak_passwords = 0
@@ -62,7 +62,9 @@ def audit_dictionary(file_path: Path, min_length: int, top_masks_n: int):
 
         # Логування прогресу
         if i == 44:
-            print(f"[INFO] Analyzed {i} passwords.")
+            logger.info(f"Analyzed {i} passwords.")
+
+    logger.info(f"Finished processing. Total analyzed: {total_passwords:,} passwords.")
 
     # Розрахунок метрик
     avg_length = total_length / total_passwords if total_passwords > 0 else 0
@@ -90,64 +92,3 @@ def audit_dictionary(file_path: Path, min_length: int, top_masks_n: int):
     }
 
     return stats_report
-
-
-def main2():
-    # CLI аргументи
-    parser = argparse.ArgumentParser(description="Password Dictionary Auditor")
-    parser.add_argument(
-        "--wordlist",
-        type=str,
-        required=True,
-        help="Шлях до файлу зі словником паролів",
-    )
-    parser.add_argument(
-        "--min-length",
-        type=int,
-        default=8,
-        help="Мінімальна довжина слабких паролів",
-    )
-    parser.add_argument(
-        "--top-masks", type=int, default=5, help="Кількість топових масок"
-    )
-    parser.add_argument(
-        "--output-stats",
-        type=str,
-        default="labs/lab02/data/mask_audit_report.json",
-        help="Шлях для збереження JSON",
-    )
-
-    args = parser.parse_args()
-    # шлях до файлу з паролями
-    wordlist_path = Path(args.wordlist)
-
-    stats = audit_dictionary(wordlist_path, args.min_length, args.top_masks)
-
-    # виведення результатів
-    print("\n=== Password Dictionary Audit Summary ===")
-    print(f"Total Passwords : {stats['total_passwords']:,}")
-    print(
-        f"Weak Passwords (<{args.min_length}) :"
-        f" {stats['weak_passwords']:,} ({stats['weak_percentage']}%)"
-    )
-    print(f"Average Length : {stats['average_length']} characters")
-
-    print(f"\n=== Top-{args.top_masks} Password Masks ===")
-    for idx, item in enumerate(stats["top_masks"], start=1):
-        print(
-            f"{idx}. Mask ({item['mask']}) : {item['count']:,}"
-            f" ({item['percentage']}%) [e.g. {item['example']}]"
-        )
-
-    # збереження статистики в JSON
-    output_path = Path(args.output_stats)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(stats, f, indent=4, ensure_ascii=False)
-
-    print(f"\n[INFO] Dictionary statistics saved to {output_path}")
-
-
-if __name__ == "__main__":
-    main2()
