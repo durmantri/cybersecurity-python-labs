@@ -221,3 +221,8 @@ __marimo__/
 
 cybersecurity-python-labs/labs/lab01/data/
 cybersecurity-python-labs/labs/lab02/data/passwords.txt
+
+labs/lab03/data/*.sqlite3
+labs/lab03/data/*.sqlite3-*
+labs/lab03/data/*.db
+labs/lab03/data/*.db-*

@@ -1,0 +1,66 @@
+{
+  "categories": [
+    { "id": 1, "name": "phishing" },
+    { "id": 2, "name": "malicious_attachment" },
+    { "id": 3, "name": "spam" }
+  ],
+
+  "records": [
+    {
+      "code": "V06-01",
+      "title": "Спостереження пошти 01",
+      "category_id": 1,
+      "value": 12,
+      "status": "new"
+    },
+    {
+      "code": "V06-02",
+      "title": "Спостереження пошти 02",
+      "category_id": 2,
+      "value": 4,
+      "status": "in_progress"
+    },
+    {
+      "code": "V06-03",
+      "title": "Спостереження пошти 03",
+      "category_id": 3,
+      "value": 30,
+      "status": "done"
+    },
+    {
+      "code": "V06-04",
+      "title": "Спостереження пошти 04",
+      "category_id": 1,
+      "value": 8,
+      "status": "new"
+    },
+    {
+      "code": "V06-05",
+      "title": "Спостереження пошти 05",
+      "category_id": 2,
+      "value": 15,
+      "status": "done"
+    },
+    {
+      "code": "V06-06",
+      "title": "Спостереження пошти 06",
+      "category_id": 3,
+      "value": 45,
+      "status": "in_progress"
+    },
+    {
+      "code": "V06-07",
+      "title": "Спостереження пошти 07",
+      "category_id": 1,
+      "value": 10,
+      "status": "done"
+    },
+    {
+      "code": "V06-08",
+      "title": "Спостереження пошти 08",
+      "category_id": 2,
+      "value": 6,
+      "status": "new"
+    }
+  ]
+}

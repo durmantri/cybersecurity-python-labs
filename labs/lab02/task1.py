@@ -62,7 +62,7 @@ class Admin(User):
         self, username: str, email: str, permissions=None, active: bool = True
     ):
         super().__init__(username, email, role="Admin", active=active)
-        # Захист від колекції
+        # Захист від передавання нульового сету
         if permissions is None:
             self.permissions = set()
         else:
@@ -73,7 +73,7 @@ class Admin(User):
 
     def revoke_permission(self, permission: str):
         if permission in self.permissions:
-            self.permissions.remove(permission)
+            self.permissions.discard(permission)
 
     def has_permission(self, permission: str) -> bool:
         return permission in self.permissions
