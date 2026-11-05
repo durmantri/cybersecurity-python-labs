@@ -1,9 +1,11 @@
 import sqlite3
 from contextlib import closing
 from pathlib import Path
+
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = BASE_DIR / "data" / "lab3.sqlite3"
 SCHEMA_PATH = BASE_DIR / "schema.sql"
+
 
 def get_connection() -> sqlite3.Connection:
     """Відкрити з’єднання з перевіркою зовнішніх ключів."""
@@ -15,8 +17,8 @@ def get_connection() -> sqlite3.Connection:
     except sqlite3.Error:
         connection.close()
         raise
-    
-    
+
+
 def initialize_database() -> None:
     """Створити таблиці за готовим SQL-скриптом."""
     script = SCHEMA_PATH.read_text(encoding="utf-8")
@@ -26,5 +28,7 @@ def initialize_database() -> None:
         except sqlite3.Error:
             connection.rollback()
             raise
+
+
 if __name__ == "__main__":
     initialize_database()

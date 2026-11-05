@@ -6,11 +6,12 @@ from pathlib import Path
 
 from labs.lab03.database import get_connection, initialize_database
 
-# Налаштування логування для зрозумілих повідомлень
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
 
-SEED_JSON_PATH =Path("labs/lab03/data/seed.json")
+SEED_JSON_PATH = Path("labs/lab03/data/seed.json")
 
 
 def seed_database() -> None:
@@ -29,13 +30,13 @@ def seed_database() -> None:
         logger.error(f"Помилка читання JSON-файлу: {e}")
         return
 
-    #Дістаємо атрибути дб
+    # атрибути дб
     categories = data.get("categories", [])
     records = data.get("records", [])
 
     with closing(get_connection()) as connection:
         cursor = connection.cursor()
-        
+
         # Перевірка чи база вже заповнена
         cursor.execute("SELECT COUNT(*) FROM categories")
         categories_count = cursor.fetchone()[0]
@@ -48,7 +49,6 @@ def seed_database() -> None:
             return
 
         try:
-            # Використовуємо контекстний менеджер транзакцій 
             with connection:
                 # Вставка категорій із фіксованими id з JSON
                 for cat in categories:
@@ -72,15 +72,17 @@ def seed_database() -> None:
                             rec["status"],
                         ),
                     )
-            
+
             logger.info("Базу даних успішно заповнено початковими даними з seed.json")
 
         except sqlite3.IntegrityError as e:
-            # rollback 
+            # rollback
             logger.error(f"Порушення цілісності даних (транзакцію скасовано): {e}")
             raise
         except sqlite3.Error as e:
-            logger.error(f"Помилка бази даних під час заповнення(транзакцію скасовано): {e}")
+            logger.error(
+                f"Помилка бази даних під час заповнення (транзакцію скасовано): {e}"
+            )
             raise
 
 

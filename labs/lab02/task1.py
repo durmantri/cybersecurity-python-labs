@@ -3,7 +3,7 @@ import hmac
 import os
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 ITERATIONS = 100_000
 SESSION_TIMEOUT_SEC = 900
@@ -87,17 +87,17 @@ class Admin(User):
 class Session:
     def __init__(self, ip: str):
         self.ip = ip
-        current_time = datetime.now(timezone.utc)
+        current_time = datetime.now(UTC)
         self.login_time = current_time
         self.last_activity = current_time
 
     def touch(self):
-        self.last_activity = datetime.now(timezone.utc)
+        self.last_activity = datetime.now(UTC)
 
     def is_active(self, timeout_sec: int) -> bool:
         if timeout_sec <= 0:
             raise ValueError("Таймаут має бути додатним числом!")
-        current_time = datetime.now(timezone.utc)
+        current_time = datetime.now(UTC)
         elapsed = (current_time - self.last_activity).total_seconds()
         return elapsed <= timeout_sec
 
@@ -115,7 +115,7 @@ class AuditLog:
 
     def add_log(self, username: str, action: str):
         record = LogRecord(
-            timestamp=datetime.now(timezone.utc), username=username, action=action
+            timestamp=datetime.now(UTC), username=username, action=action
         )
         self.records.append(record)
 
