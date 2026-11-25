@@ -1,0 +1,48 @@
+{
+  "resultsPerPage": 1,
+  "startIndex": 0,
+  "totalResults": 1,
+  "format": "NVD_CVE",
+  "version": "2.0",
+  "timestamp": "2026-10-26T00:00:00.000",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2099-10001",
+        "sourceIdentifier": "training@example.invalid",
+        "published": "2026-01-01T00:00:00.000",
+        "lastModified": "2026-10-26T00:00:00.000",
+        "vulnStatus": "Analyzed",
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Synthetic vulnerability for offline API testing."
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL"
+              }
+            }
+          ]
+        },
+        "references": []
+      }
+    }
+  ]
+}
