@@ -118,7 +118,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Помилка перевірки даних: {exc}", file=sys.stderr)
         return 1
 
-    # Виводимо лише JSON-звіт
+    # Вивід json
     print(json.dumps(report, indent=2, ensure_ascii=False))
 
     return 0

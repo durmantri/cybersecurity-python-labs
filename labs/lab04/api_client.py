@@ -23,10 +23,10 @@ def build_headers() -> dict[str, str]:
 
     headers = {"Accept": "application/json"}
 
-    # API-ключ зі змінної середовища
+    # API ключ зі змінної середовища
     api_key = os.getenv("NVD_API_KEY")
 
-    # Додаємо ключ лише тоді, коли він непорожній
+    # додавання ключа якщо поле не пусте
     if api_key and api_key.strip():
         headers["apiKey"] = api_key.strip()
 
@@ -44,14 +44,13 @@ def fetch_response(cve_id: str) -> Any:
         allow_redirects=False,
     )
 
-    # Перевіряємо HTTP-помилки
+    # HTTP-помилки
     response.raise_for_status()
 
-    # Дозволений лише статус 200
     if response.status_code != 200:
         raise HTTPStatusError(response.status_code)
 
-    # Декодуємо JSON
+    # отримання JSON
     try:
         return response.json()
     except ValueError as exc:

@@ -5,16 +5,11 @@ from typing import Any
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
-# payload = Path("labs/lab04/data/nvd_sample.json")
-
 
 def extract_record(payload: Any, cve_id: str) -> dict[str, Any] | None:
     """Перевірки для відповіді NVD"""
 
-    # with open(payload, "r", encoding="utf-8") as file:
-    # payload = json.load(file)
-
-    if not isinstance(payload, dict):  # замінити data на payload / доробити
+    if not isinstance(payload, dict):
         raise TypeError("Відповідь NVD повинна бути словником")
 
     if "vulnerabilities" not in payload:
@@ -247,9 +242,4 @@ def build_report(record: dict, cve_id: str, VARIANT_NUMBER: int):
     else:
         report["decision"] = "other"
 
-    # print(json.dumps(report, indent=2, ensure_ascii=False))
     return report
-
-    # if __name__ == "__main__":
-    # record = extract_record(payload, "CVE-2099-10001")
-    # final = build_report(record, "CVE-2099-10001", VARIANT_NUMBER)
